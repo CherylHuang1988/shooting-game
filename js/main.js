@@ -9,6 +9,10 @@ function preload() {
   game.preload();
 }
 
+function keyPressed() {
+  game.keyPressed();
+}
+
 function draw() {
   clear();
   game.draw();
