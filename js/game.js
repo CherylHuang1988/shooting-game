@@ -1,25 +1,35 @@
 class Game {
     constructor() {
         this.background = new Background();  
-        this.player = new Player();
+        this.player = new Player();       
         this.enemy = [];
+        this.enemyPics = [];
         this.bullet = [];
     }
 
-    preload() {
-        this.background.image = loadImage('assets/paved-road-surrounded-by-trees.jpg');
-        this.player.image = loadImage('assets/seaplane.png');
-        this.enemy.image = loadImage('assets/jet-plane.png');       
+    setup(){
+      this.enemyPics.push(enemyPic1);
+      this.enemyPics.push(enemyPic2);
+      this.enemyPics.push(enemyPic3);
+    }
 
+    preload() {
+        this.background.image = loadImage('assets/background.jpg');       
+        this.player.image = loadImage('assets/player.png');
+        enemyPic1 = loadImage('assets/enemy1.png')
+        enemyPic2= loadImage('assets/enemy2.png')
+        enemyPic3= loadImage('assets/enemy3.png')
+        bulletImage = loadImage('assets/bullet.png');   
     }
 
     draw() {
         this.background.draw();
-        this.player.draw();      
+        this.player.draw();             
         
 
         if (frameCount % 120 === 0) {
-          this.enemy.push(new Enemy());
+          const randomPicIndex = Math.floor(random(this.enemyPics.length))
+          this.enemy.push(new Enemy(this.enemyPics[randomPicIndex]));
         }
         this.enemy.forEach((enemy, index) => {
           enemy.draw();
@@ -27,6 +37,7 @@ class Game {
             this.enemy.splice(index, 1);
           }
         }); 
+               
 
         this.bullet.forEach((bullet, index) => {
           bullet.draw();
@@ -38,7 +49,7 @@ class Game {
 
     keyPressed() {
       if (keyCode === SPACE) {
-        this.bullet.push(new Bullet(this.player.x + 100, this.player.y + 50));
+        this.bullet.push(new Bullet(this.player.x + 100, this.player.y + 40, bulletImage));
       }
     }    
 

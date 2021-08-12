@@ -1,15 +1,15 @@
 class Enemy {
-    constructor() {
-        this.width = random(100, 130);
-        this.height = random(100, 130);
+    constructor(enemyPic) {       
+        this.width = random(70, 100);
+        this.height = random(70, 100);
         this.x = CANVAS_WIDTH + this.width;
         this.y = random(0, CANVAS_HEIGHT - this.height);
-        this.image;
+        this.image = enemyPic;        
     }
 
     draw() {
-        //image(this.image, this.x, this.y, this.width, this.height);
-        ellipse(this.x, this.y, this.width, this.height);
+      console.log(this.image)
+        image(this.image, this.x, this.y, this.width, this.height);
         this.x -= 2;
     }
 
