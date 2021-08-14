@@ -1,28 +1,32 @@
 class Enemy {
     constructor(enemyPic) {       
-        this.width = random(70, 100);
-        this.height = random(70, 100);
+        this.width = random(70, 110);
+        this.height = random(70, 110);
         this.x = CANVAS_WIDTH + this.width;
         this.y = random(0, CANVAS_HEIGHT - this.height);
-        this.image = enemyPic;        
+        this.image = enemyPic;  
+        this.delete = false;      
     }
 
     draw() {
-      console.log(this.image)
         image(this.image, this.x, this.y, this.width, this.height);
         this.x -= 2;
     }
 
+    remove() {
+      this.delete = true;
+  }
+
     get bottomSide() {
         return this.y + this.height;
       }    
-      get topSide() {
+    get topSide() {
         return this.y;
       }    
-      get leftSide() {
+    get leftSide() {
         return this.x;
       }
-      get rightSide() {
+    get rightSide() {
         return this.x + this.width;
       }
 }

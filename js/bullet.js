@@ -5,6 +5,7 @@ class Bullet{
         this.width = 20;
         this.height = 20;
         this.image = bulletImage ;
+        this.delete = false;
     }
 
     draw() {
@@ -12,16 +13,20 @@ class Bullet{
         this.x += 8
     }
 
+    remove() {
+        this.delete = true;
+    }
+
     get bottomSide() {
         return this.y + this.height;
       }    
-      get topSide() {
+    get topSide() {
         return this.y;
       }    
-      get leftSide() {
+    get leftSide() {
         return this.x;
       }
-      get rightSide() {
+    get rightSide() {
         return this.x + this.width;
-      }
+      }    
 }
