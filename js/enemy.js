@@ -5,17 +5,31 @@ class Enemy {
         this.x = CANVAS_WIDTH + this.width;
         this.y = random(0, CANVAS_HEIGHT - this.height);
         this.image = enemyPic;  
-        this.delete = false;      
+        this.delete = false;  
+     
+        this.isDestroying = false;   
     }
 
     draw() {
-        image(this.image, this.x, this.y, this.width, this.height);
-        this.x -= 2;
+        if (this.isDestroying){
+          this.image = explosionImage
+          image(this.image, this.x, this.y, this.width, this.height);
+        } else {
+          image(this.image, this.x, this.y, this.width, this.height);
+          this.x -= 2;
+        }
+    }    
+
+    destroy() {
+      this.isDestroying = true;
+      setTimeout(() => {       
+        this.delete = true
+      }, 100)// one second = 1000 miliseconds
     }
 
     remove() {
       this.delete = true;
-  }
+    }      
 
     get bottomSide() {
         return this.y + this.height;
