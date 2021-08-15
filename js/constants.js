@@ -8,6 +8,10 @@ const SPACE = 32;
 let enemyPic1;
 let enemyPic2;
 let enemyPic3;
+let enemyPic4;
 let bulletImage;
 let explosionImage;
+let bgMusic;
+let shootingSound;
+let explosionSound;
 

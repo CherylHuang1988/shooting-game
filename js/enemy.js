@@ -5,8 +5,7 @@ class Enemy {
         this.x = CANVAS_WIDTH + this.width;
         this.y = random(0, CANVAS_HEIGHT - this.height);
         this.image = enemyPic;  
-        this.delete = false;  
-     
+        this.delete = false;      
         this.isDestroying = false;   
     }
 
@@ -24,7 +23,7 @@ class Enemy {
       this.isDestroying = true;
       setTimeout(() => {       
         this.delete = true
-      }, 100)// one second = 1000 miliseconds
+      }, 200)
     }
 
     remove() {

@@ -11,6 +11,9 @@ class Game {
     this.enemyPics.push(enemyPic1);
     this.enemyPics.push(enemyPic2);
     this.enemyPics.push(enemyPic3);
+    this.enemyPics.push(enemyPic4);
+    bgMusic.play();
+    bgMusic.setVolume(0.6);        
   }
 
   preload() {
@@ -19,8 +22,12 @@ class Game {
     enemyPic1 = loadImage("assets/enemy1.png");
     enemyPic2 = loadImage("assets/enemy2.png");
     enemyPic3 = loadImage("assets/enemy3.png");
+    enemyPic4 = loadImage("assets/enemy4.png");
     bulletImage = loadImage("assets/bullet.png");
     explosionImage = loadImage("assets/explosion.png");
+    bgMusic = loadSound("assets/background.mp3");
+    shootingSound = loadSound("assets/shooting.mp3");
+    explosionSound = loadSound("assets/explosion.mp3");
   }
 
   draw() {
@@ -51,6 +58,7 @@ class Game {
         if (this.collisionCheck(bullet, enemy)) {
           bullet.remove();
           enemy.destroy();
+          explosionSound.play();
         }
       });
       if (bullet.delete) {
@@ -63,7 +71,8 @@ class Game {
     if (keyCode === SPACE) {
       this.bullet.push(
         new Bullet(this.player.x + 100, this.player.y + 40, bulletImage)
-      );
+        );
+        shootingSound.play();
     }
   }
 
