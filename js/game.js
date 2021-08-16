@@ -5,7 +5,7 @@ class Game {
     this.enemy = [];
     this.enemyPics = [];
     this.bullet = [];   
-    this.score = 0;        
+    this.score = 0;       
   }
 
   setup() {
