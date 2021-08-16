@@ -5,6 +5,7 @@ const UP_ARROW = 38;
 const LEFT_ARROW = 37;
 const RIGHT_ARROW = 39;
 const SPACE = 32;
+const ENTER = 13;
 let enemyPic1;
 let enemyPic2;
 let enemyPic3;
@@ -14,4 +15,7 @@ let explosionImage;
 let bgMusic;
 let shootingSound;
 let explosionSound;
+let deadSound;
+const scoreHolder = document.querySelector("h1 span");
+const canvas = document.querySelector("#canvas");
 

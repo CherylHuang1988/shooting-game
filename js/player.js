@@ -8,14 +8,33 @@ class Player{
         this.speed = 5;
         this.rightBoundary = CANVAS_WIDTH - this.width;
         this.bottomBoundary = CANVAS_HEIGHT - this.height;
+        this.delete = false;
+        this.isDestroying = false;
     }
 
     draw() {
-        image(this.image, this.x, this.y, this.width, this.height);
+        if (this.isDestroying){
+          this.image = explosionImage
+          image(this.image, this.x, this.y, this.width, this.height);
+        } else{
+          image(this.image, this.x, this.y, this.width, this.height);
+        }       
+        //image(this.image, this.x, this.y, this.width, this.height);
         this.move();
         this.x = constrain(this.x, 0, (CANVAS_WIDTH - this.width));
         this.y = constrain(this.y, 0, (CANVAS_HEIGHT - this.height));
     } 
+
+    destroy() {
+      this.isDestroying = true;
+      setTimeout(() => {       
+        this.delete = true
+      }, 200);      
+    }
+
+    remove() {
+      this.delete = true;
+    }
     
     move() {
         if (keyIsDown(DOWN_ARROW)) {

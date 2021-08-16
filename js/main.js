@@ -10,8 +10,12 @@ function preload() {
   game.preload();
 }
 
+function loaded() {
+  game.loaded();
+}
+
 function keyPressed() {
-  game.keyPressed();
+  game.keyPressed(); 
 }
 
 function draw() {
