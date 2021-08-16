@@ -91,6 +91,9 @@ class Game {
       this.bullet.push(new Bullet(this.player.x + 100, this.player.y + 40, bulletImage));
       shootingSound.play();
     }    
+    if (keyCode === ENTER) {
+      location.reload(); 
+    }
   }
 
   collisionCheck(enemy, bullet) {
