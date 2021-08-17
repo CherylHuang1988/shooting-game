@@ -90,6 +90,8 @@ class Game {
     
     if (frameCount % (60 * 5) === 0) {
       this.gameDifficulty += 1;
+      bgMusic.rate(musicRate);
+      musicRate += 0.01;
     }
   }  
 
