@@ -18,4 +18,5 @@ let explosionSound;
 let deadSound;
 const scoreHolder = document.querySelector("h1 span");
 const canvas = document.querySelector("#canvas");
+let theRealSpeed;
 

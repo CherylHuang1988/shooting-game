@@ -5,7 +5,8 @@ class Game {
     this.enemy = [];
     this.enemyPics = [];
     this.bullet = [];   
-    this.score = 0;       
+    this.score = 0;     
+    this.gameDifficulty = 1  
   }
 
   setup() {
@@ -40,15 +41,17 @@ class Game {
     bgMusic.setVolume(0.6);
     deadSound.setVolume(0.6);
 
-    if (frameCount % 120 === 0) {
+    if (frameCount % 60 === 0) {
       const randomPicIndex = Math.floor(random(this.enemyPics.length));
-      this.enemy.push(new Enemy(this.enemyPics[randomPicIndex]));
+      this.enemy.push(new Enemy(this.enemyPics[randomPicIndex], this.gameDifficulty));
     }
 
     this.enemy.forEach((enemy, index) => {
       enemy.draw();
       if (enemy.x + enemy.width < 0) {
         enemy.remove();
+        this.score -= 10;
+        scoreHolder.innerText = this.score;
       }
       if (enemy.delete) {
         this.enemy.splice(index, 1);
@@ -83,7 +86,11 @@ class Game {
       if (bullet.delete) {
         this.bullet.splice(index, 1);
       }     
-    });    
+    });   
+    
+    if (frameCount % (60 * 5) === 0) {
+      this.gameDifficulty += 1;
+    }
   }  
 
   keyPressed() {

@@ -1,12 +1,14 @@
 class Enemy {
-    constructor(enemyPic) {       
+    constructor(enemyPic, speed) {       
         this.width = random(70, 110);
         this.height = random(70, 110);
         this.x = CANVAS_WIDTH + this.width;
         this.y = random(0, CANVAS_HEIGHT - this.height);
         this.image = enemyPic;  
         this.delete = false;      
-        this.isDestroying = false;   
+        this.isDestroying = false; 
+        theRealSpeed = 2 * speed; 
+        this.speed = theRealSpeed; 
     }
 
     draw() {
@@ -15,7 +17,7 @@ class Enemy {
           image(this.image, this.x, this.y, this.width, this.height);
         } else {
           image(this.image, this.x, this.y, this.width, this.height);
-          this.x -= 2;
+          this.x -= this.speed;
         }
     }    
 
