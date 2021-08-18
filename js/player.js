@@ -18,8 +18,7 @@ class Player{
           image(this.image, this.x, this.y, this.width, this.height);
         } else{
           image(this.image, this.x, this.y, this.width, this.height);
-        }       
-        //image(this.image, this.x, this.y, this.width, this.height);
+        }    
         this.move();
         this.x = constrain(this.x, 0, (CANVAS_WIDTH - this.width));
         this.y = constrain(this.y, 0, (CANVAS_HEIGHT - this.height));

@@ -38,8 +38,9 @@ class Game {
   draw() {
     this.background.draw();
     this.player.draw();
-    bgMusic.setVolume(0.6);
     deadSound.setVolume(0.6);
+    shootingSound.setVolume(0.6);
+    explosionSound.setVolume(0.6);
 
     if (frameCount % 60 === 0) {
       const randomPicIndex = Math.floor(random(this.enemyPics.length));
